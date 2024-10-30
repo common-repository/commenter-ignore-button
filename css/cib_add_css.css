@@ -1,0 +1,66 @@
+/* ALTERNATIVE BUTTON STYLE 
+ * These default alternative styles produce text style buttons: "x" (ignore) and "un-ignore," floated to the right
+ * To modify the text itself, use the ignore_label and unignore_label filters (see CIB documentation for examples.)
+ */
+#comments .cib-container, .comments .cib-container, .commentlist .cib-container, .comment-list .cib-container {
+    display: block;
+    float: right;
+    height: auto;
+    position: relative;
+    width: auto;
+}
+.cks-cib-ignore-button .cib-button-text {
+    background-color: white;
+    border: 1px solid lightgray;
+    color: lightgray;
+    display: block;
+    font-size: 9px;
+    padding: 2px 4px;
+    text-align: center;
+    text-transform: uppercase;
+}  
+.cks-cib-unignore-button .cib-button-text {
+    background-color: white;
+    border: 1px solid green;
+    color: green;
+    display: block;
+    font-size: 9px;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    padding: 2px 4px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.cks-cib-unignore-button .cib-button-text:hover {
+    background-color: darkgreen;
+    color: white;  
+}
+.cks-cib-ignore-button .cib-button-text:hover {
+    background-color: red;
+    color: white;  
+}
+.cks-cib, cks-cib:hover, .cks-cib-ignore-button:hover, .cks-cib-unignore-button:hover {
+    background-image: none;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: block;
+    float: right;
+    height: auto;
+    margin-left: 0;
+    vertical-align: inherit;
+    width: auto;
+    z-index: 10;
+}
+.ignore-this-comment > article .commenter-ignored-msg,
+.ignore-this-comment > .comment .commenter-ignored-msg,
+.ignore-this-comment > .comment-body .commenter-ignored-msg,
+.ignore-this-comment > div .commenter-ignored-msg
+{
+    display: none;
+} 
+#comments .comment-metadata a.cks-cib.cks-cib-unignore-button,
+#comments .comment-metadata a.cks-cib.cks-cib-unignore-button:hover,
+.comment-metadata .cib-container .cks-cib
+{
+    width: 100%;
+}

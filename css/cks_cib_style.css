@@ -1,0 +1,351 @@
+/**
+ * @package: Commenter Ignore Button
+ * @Since: 1.0
+ * @Date: January 2017
+ * @Author: CK MacLeod
+ * @Author: URI: http://ckmacleod.com
+ * @License: GPL3
+ */
+/** PRE-IGNORED STYLES **/
+/*handles four different main alternatives */
+#comments .cib-container, 
+.comments .cib-container,
+.commentlist .cib-container,
+.comment-list .cib-container
+{
+    display: inline-block;
+    height: 1.2em;
+    position: relative;
+    width: 1.2em;
+    vertical-align: text-top;
+    z-index: 1;
+}
+/*remove underlining if any applied to CIB anchor link */
+.comment-metadata .cib-container a.cks-cib,
+.comment-author .cib-container a.cks-cib,
+#comments .cib-container a.cks-cib,
+.cib-container a.cks-cib 
+{
+    border: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    padding: 0;
+    text-decoration: none;
+}
+/* CIB BASIC AND PRE-IGNORE */
+.cks-cib {
+    background-image: url(../images/ignore_unignore.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    display: block;
+    height: 10px;
+    margin: 0 3px;
+    position: relative;
+    width: 10px;
+}
+/*base format of hover action */
+.cks-cib:hover {
+    background-size: 40px 40px;
+    background-position-y: -20px;
+    height: 20px;
+    margin-left: 0;
+    width: 20px;
+}
+.cib-button-text {
+    display: none;
+}
+/* (UN-)IGNORE BUTTON */
+.cks-cib-ignore-button {
+    background-position: 0 0;
+}
+/* UNIGNORE BUTTON */
+.cks-cib-unignore-button {
+    background-position: -15px -15px;
+    background-size: 30px 30px;
+    height: 15px;
+    width: 15px;
+}
+/* unignore hover */
+.cks-cib-unignore-button:hover {
+    background-position: -20px -20px;
+    background-size: 40px 40px;
+}
+/* ARTICLE OR COMMENT-BODY P, BASE FORMAT */
+article, 
+.comment-body,
+.comment-content 
+{
+    opacity: 1;
+    transition: opacity 3s, padding 3s;
+}
+article .comment-content p,
+.comment-body p, 
+commentcontent p 
+{
+    opacity: 1; 
+    transition: opacity 1s, max-height 0s; 
+}
+/* POST-IGNORE */
+.ignore-this-comment > article,
+.ignore-this-comment > .comment-body,
+.ignore-this-comment > div > .comment-body,
+.ignore-this-comment > .commentcontent,
+.ignore-this-comment > .comment .comment-content
+{
+    border: 1px lightpink dotted;
+    min-height: 40px; 
+    opacity: .6;
+    padding: 0;
+    position: relative;
+    transition: opacity 3s, padding 3s;
+}
+.ignore-this-comment > article .comment-content p,
+.ignore-this-comment > div > .comment-body p,
+.ignore-this-comment > .comment-body p,
+.ignore-this-comment > .commentcontent p,
+.ignore-this-comment > .comment .comment-content p,
+.ignore-this-comment > article .comment-content blockquote,
+.ignore-this-comment > .comment-body blockquote,
+.ignore-this-comment div > .comment-body blockquote,
+.ignore-this-comment > .commentcontent blockquote,
+.ignore-this-comment > .comment .comment-content blockquote
+{
+    margin: 0;
+    max-height: 0px;
+    padding: 0; 
+    opacity: 0.01;
+    transition: opacity 3s, max-height 0s 1s;
+}
+.ignore-this-comment > article .comment-meta,
+.ignore-this-comment > .comment-body .comment-meta,
+.ignore-this-comment > div > .comment-body .comment-meta,
+.ignore-this-comment > .commentcontent .comment-meta,
+.ignore-this-comment > .comment .comment-content .comment-meta
+{
+    margin-bottom: 0;
+}
+.ignore-this-comment > article img,
+.ignore-this-comment > .comment-body img,
+.ignore-this-comment > div > .comment-body img,
+.ignore-this-comment > .commentcontent img,
+.ignore-this-comment > .comment .comment-content img
+{
+    display: none;
+}
+.ignore-this-comment > article .comment-metadata,
+.ignore-this-comment > .comment-body .comment-metadata,
+.ignore-this-comment > div > .comment-body .comment-metadata
+.ignore-this-comment > .commentcontent .comment-metadata,
+.ignore-this-comment > .comment .comment-content .comment-metadata
+{
+    margin-bottom: 0;
+}
+
+.ignore-this-comment > article .commenter-ignored-msg,
+.ignore-this-comment > .comment .commenter-ignored-msg,
+.ignore-this-comment > .comment-body .commenter-ignored-msg,
+.ignore-this-comment > .commentcontent .commenter-ignored-msg,
+.ignore-this-comment > .comment .comment-content .commenter-ignored-msg,
+.ignore-this-comment > div div .commenter-ignored-msg
+{
+    display: block;
+    height: 100%;
+    max-height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 18px;
+    transition: opacity 3s ease 0s, max-height 3s ease 0s, height 3s ease 0s,max-width 3s ease 0s, width 3s ease 0s;
+    width: 100%;
+    max-width: 100%;
+}
+/*replace comment reply link on ignored comments */
+.ignore-this-comment > article div .cib-reply,
+.ignore-this-comment > .comment .reply .cib-reply,
+.ignore-this-comment > .comment-body .reply .cib-reply,
+.ignore-this-comment > div > .reply .cib-reply,
+.ignore-this-comment > .comment .comment-content .cib-reply,
+.ignore-this-comment > div div .cib-reply
+{
+    display: none;
+}
+/* COMMENTER IGNORED MESSAGE PRE-IGNORED */
+.commenter-ignored-msg {
+    clear: right;
+    display: block;
+    float: right;
+    height: 0;
+    max-height: 0;
+    opacity: 0.01;
+    text-align: right;
+    transition: opacity 3s ease 0s, max-height 0s ease 1s, height 0s ease 1s, max-width 0s ease 1s, width 0s ease 1s;
+    width: 0;
+}
+.ignored-text {
+    border: 1px solid red;
+    color: red;
+    font-size: .7em;
+    height: 100%;
+    padding: 2px 4px;
+}
+/* ACTION MESSAGES */
+.adding-to-ignore {
+    background-color: red ;
+    color: white;
+    display: inline-block;
+    float: right;
+    font-size: .6em;
+    margin-left: 10%;
+    padding: 2px 6px;
+    width: auto;
+}
+.removing-from-ignore {
+    background-color: green ;
+    color: white;
+    display: inline-block;
+    float: right;
+    font-size: .6em;
+    margin-left: 10%;
+    padding: 0 4px;
+    width: auto;
+}
+/* GUIDELINES INSERT */
+
+/* IGNORABLES LIST */
+#ignorables-list p, #cib-guidelines-body p {
+    font-size: .8em ;
+    font-style: italic ;
+}
+#ignorables-list, #cib-guidelines {
+    clear: both;
+    margin-left: 38.2%;
+    text-align: right;
+}
+.on-ignore {
+    font-weight: 700;
+}
+.adding-to-list {
+    color: red;
+}
+.removing-from-list {
+    color: green;
+}
+#cib-guidelines .icon-span {
+    background-image: url(../images/ignore_unignore_2.png);
+    background-repeat: no-repeat;
+    background-size: 2em 2em;
+    display: inline-block;
+    height: 1em;
+    width: 1.5em;
+    vertical-align: text-bottom;
+}
+a#cib-guidelines-head {
+    font-weight: 700;
+}
+#cib-guidelines-body {
+    display: none;
+}
+#cib-guidelines-body a {
+    border: 1px dotted gray;
+    display: inline-block;
+    padding: 0 4px;
+}
+#cib-guidelines-body img {
+    height: 1em;
+    display: inline-block;
+    margin: 0 2px;
+    vertical-align: middle;
+    width: 1em;
+}
+/* FOR REPLY and COMMENT-CONTENT OPTIONS */
+#comments .comment-list .ignore-this-comment > article .reply .cib-container,
+#comments .comment-list .ignore-this-comment > article .comment-content .cib-container,
+#comments .comment-list .ignore-this-comment > article .comment-metadata .cib-container,
+#comments .comment-list .ignore-this-comment > div > .comment-metadata .cib-container
+{
+    margin-top: 0;
+    max-height: 100%;
+    opacity: .7;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99;
+}
+#comments .comment-list .cib-reply .cib-container a,
+#comments .commentlist .cib-reply .cib-container a,
+.comment-content .cib-container a
+{
+    border: none;
+    box-shadow: none;
+    display: block;
+    float: right;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    text-decoration: none;
+}
+/* COMMENT-CONTENT OPTION */
+#comments .comment-list article .comment-content .cib-container {
+    float: right;
+    margin-top: -2em;
+}
+/* REPLY-LINK OPTION */
+.cib-reply-link {
+    display: inline-block;
+}
+#comments .comment-list .cib-reply .cib-container {
+   float: none;
+   vertical-align: middle;
+}
+.ignore-this-comment > article .cib-reply-link .comment-reply-link ,
+.ignore-this-comment > .comment-body .cib-reply-link .comment-reply-link
+.ignore-this-comment > div > .comment-body .cib-reply-link .comment-reply-link
+{
+    display: none;
+}
+.ignore-this-comment > article .cib-reply-link span:not(.ignored-text),
+.ignore-this-comment > .comment-body .cib-reply-link span:not(.ignored-text),
+.ignore-this-comment > div > .comment-body .cib-reply-link span:not(.ignored-text)
+{
+    display: none;
+}
+/*"datetime" option */
+#comments .comment-metadata .cib-container {
+    border: none;
+    display: inline-block;
+    float: none;
+    height: 1em;
+    margin-left: 4px;
+    z-index: 1;
+}
+.comment-metadata .cib-container .cks-cib {
+    margin: 0;
+    top: inherit;
+}
+#comments .comment-metadata .cib-container a.cks-cib:hover {
+    background-size: 40px 40px;
+    display: block;
+    height: 20px;
+    margin-left: 0;
+    vertical-align: 10%;
+    width: 20px;
+}
+#comments .comment-metadata a.cks-cib.cks-cib-unignore-button {
+    background-position: -15px -15px;
+    background-size: 30px 30px;
+    float: right;
+    height: 15px;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+    width: 15px;
+}
+#comments .comment-metadata a.cks-cib.cks-cib-unignore-button:hover {
+    background-position: -20px -20px;
+}
+/* prevent display of CIB in sidebar widgets (alternative is to enable with custom coding)*/
+.widget .cib-container, .widget-area .cib-container, .secondary .cib-container {
+    display: none;
+}
